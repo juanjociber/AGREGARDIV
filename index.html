@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación DIV hijos</title>
+</head>
+    <style>       
+        .actividad, .subactividad {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .add-icon {
+            cursor: pointer;
+            color: blue;
+            margin-left: 10px;
+        }
+    </style>
+<body>
+
+    <div id="matriz">
+        <button id="btnAgregarActividad">Agregar Actividad</button>
+    </div>
+
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const matrizDiv = document.getElementById('matriz');
+        const btnAgregarActividad = document.getElementById('btnAgregarActividad');
+
+        btnAgregarActividad.addEventListener('click', () => {
+            agregarActividad(matrizDiv);
+        });
+
+        const agregarActividad =(container) => {
+          const actividadDiv = document.createElement('div');
+          actividadDiv.classList.add('actividad');
+
+          const activityNameInput = document.createElement('input');
+          activityNameInput.setAttribute('type', 'text');
+          activityNameInput.setAttribute('placeholder', 'Nombre de la Actividad');
+          actividadDiv.appendChild(activityNameInput);
+
+          const addSubActivityIcon = document.createElement('span');
+          addSubActivityIcon.classList.add('add-icon');
+          addSubActivityIcon.textContent = 'Agregar Subactividad';
+          addSubActivityIcon.addEventListener('click', () => {
+              addSubActivity(actividadDiv);
+          });
+          actividadDiv.appendChild(addSubActivityIcon);
+
+          container.appendChild(actividadDiv);
+        }
+
+        const addSubActivity = (container) => {
+          const subActivityDiv = document.createElement('div');
+          subActivityDiv.classList.add('subactividad');
+
+          const subActivityNameInput = document.createElement('input');
+          subActivityNameInput.setAttribute('type', 'text');
+          subActivityNameInput.setAttribute('placeholder', 'Nombre de la Subactividad');
+          subActivityDiv.appendChild(subActivityNameInput);
+
+          const diagnosisInput = document.createElement('input');
+          diagnosisInput.setAttribute('type', 'text');
+          diagnosisInput.setAttribute('placeholder', 'Diagnóstico');
+          subActivityDiv.appendChild(diagnosisInput);
+
+          const statusInput = document.createElement('input');
+          statusInput.setAttribute('type', 'text');
+          statusInput.setAttribute('placeholder', 'Estado');
+          subActivityDiv.appendChild(statusInput);
+
+          const observationInput = document.createElement('input');
+          observationInput.setAttribute('type', 'text');
+          observationInput.setAttribute('placeholder', 'Observación');
+          subActivityDiv.appendChild(observationInput);
+
+          container.appendChild(subActivityDiv);
+        }
+      });
+
+
+    </script>
+</body>
+</html>
